@@ -1,0 +1,11 @@
+.container {
+  margin-top: 20px;
+}
+
+body { 
+  /* background: url("https://cdn.i-scmp.com/sites/default/files/styles/1200x800/public/d8/images/methode/2019/03/16/35e584f4-46f3-11e9-b5dc-9921d5eb8a6d_image_hires_194000.JPG?itok=RiqWzzUS") no-repeat center center fixed;  */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
