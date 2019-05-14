@@ -2,8 +2,8 @@
 module.exports = {
   'connection': {
     'host': 'localhost',
-    'user': 'triology',
-    'password': 'password123'
+    'user': 'root',
+    'password': 'yeloc1221'
   },
   'database': 'coderage'
 };
