@@ -6,6 +6,7 @@ A Node.js/Express project with a MySQL database.
 1. `npm install` to install the necessary packages.
 2. Delete any coderage database in mySQL `node scripts/dbsetup.js` to set up your database
 
+<<<<<<< HEAD
 ## User administration
 Basic user administration (viewing and deleting users) is accessible at the `/admin` path. This path is only visible to users with the `admin` property (in the users database), which you can set with direct database access.
 
@@ -32,3 +33,4 @@ Your project must:
 * Meet good quality coding standards (indentation, scoping, naming).
 
 * Must not expose sensitive API key information on the server, see [Protecting-API-Keys-In-Node.md](../../../10-nodejs/03-Supplemental/Protecting-API-Keys-In-Node.md)
+=======
