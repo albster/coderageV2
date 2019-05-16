@@ -1,8 +1,13 @@
+// *********************************************************************************
+// CONNECTION.JS - THIS FILE INITIATES THE CONNECTION TO MYSQL
+// *********************************************************************************
+
 // Dependencies
 var Sequelize = require("sequelize");
 
-var sequelize = new Sequelize("apwl4ps42kxf73ja", "nkzqw2sl69sggim9", "jlj3b2vcgokcpo0y", {
-  host: "ysp9sse09kl0tzxj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+// Creates mySQL connection using Sequelize, the empty string in the third argument spot is our password.
+var sequelize = new Sequelize("sequelize_chirpy", "triology", "password123", {
+  host: "localhost",
   port: 3306,
   dialect: "mysql",
   pool: {
@@ -12,4 +17,5 @@ var sequelize = new Sequelize("apwl4ps42kxf73ja", "nkzqw2sl69sggim9", "jlj3b2vcg
   }
 });
 
+// Exports the connection for other files to use
 module.exports = sequelize;

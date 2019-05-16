@@ -1,21 +1,63 @@
+// *********************************************************************************
+// api-routes.js - this file offers a set of routes for displaying and saving data to the db
+// *********************************************************************************
 
+// Dependencies
+// =============================================================
 var Chirp = require("../models/chirp.js");
+var auth = require('../utils/auth');
+// Routes for authentication (signup, login, logout)
+module.exports = function(app, passport) {
 
+  app.get('/signup', auth.alreadyLoggedIn, function(req, res, next) {
 
+    res.render('signup', { message: req.flash('signupMessage') });
+
+  });
+
+  app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/profile',
+    failureRedirect: '/signup',
+    failureFlash: true // Allow flash messages
+  }));
+
+  app.get('/login', auth.alreadyLoggedIn, function(req, res, next) {
+
+    res.render('login', { message: req.flash('loginMessage') });
+
+  });
+
+  app.post('/login', passport.authenticate('local-login', {
+    successRedirect: '/profile',
+    failureRedirect: '/login',
+    failureFlash: true // Allow flash messages
+  }));
+
+  app.get('/logout', function(req, res, next) {
+
+    req.logout();
+    res.redirect('/');
+
+  });
+
+};
+
+// Routes
+// =============================================================
 module.exports = function(app) {
 
-//   app.get("/", function (req, res) {
-//     Chirp.findAll({}).then(function(results) {
-//       // results are available to us inside the .then
-//       res.render("index", {
-//         title: "Welcome!", 
-//         Chirps: results
-//       });
-//     });
-// });
+  app.get("/", function (req, res) {
+    Chirp.findAll({}).then(function(results) {
+      // results are available to us inside the .then
+      res.render("index", {
+        title: "Welcome!", 
+        Chirps: results
+      });
+    });
+});
 
-app.get("/profile", function (req, res) {
-  res.render("profile");
+app.get("/dashboard", function (req, res) {
+  res.render("dashboard");
 });
 
   // Get all chirps
@@ -50,3 +92,6 @@ app.get("/profile", function (req, res) {
   });
 
 };
+
+
+
