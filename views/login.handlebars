@@ -1,6 +1,15 @@
+<div class="card-body aqua-gradient color-block mb-3 mx-auto z-depth-1 siteNameHeader">
+  <a href="/">
+    <h1 id="siteName">CodeRage</h1>
+  </a>
+  <br>
+  <p class="tagLine">Vent and let it all out..</p>
+</div>
+
+
 <div class="container">
 
-  <div class="col-sm-6 col-sm-offset-3 text-center">
+  <div class="card-body aqua-gradient color-block mb-3 mx-auto z-depth-1 loginBlock">
     <h1>Login</h1>
 
     {{#if message.length}}
@@ -16,13 +25,15 @@
         <label>Password</label>
         <input type="password" class="form-control" name="password" required>
       </div>
-      <button type="submit" class="btn btn-info">Login</button>
+
+      <button type="sumbit" class="btn aqua-gradient loginButton">Login</button>
     </form>
 
     <hr>
-
-    <p>Need an account? <a href="/signup">Signup</a></p>
-    <p>Or return to <a href="/">home</a>.</p>
+    <div>
+      <p class="directories">Need an account? <a class="link" href="/signup">Signup</a></p>
+      <p class="directories">Or return to <a class="link" href="/">home</a>.</p>
+    </div>
   </div>
-  
+
 </div>
