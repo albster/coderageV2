@@ -1,6 +1,6 @@
 // Route middleware to make sure a user is logged in
-var requireLogin = function(req, res, next) {
-	
+var requireLogin = function (req, res, next) {
+
   // If user is authenticated in the session, carry on
   if (req.isAuthenticated())
     return next();
@@ -11,8 +11,8 @@ var requireLogin = function(req, res, next) {
 };
 
 // Route middleware to redirect a logged in user to their profile
-var alreadyLoggedIn = function(req, res, next) {
-  
+var alreadyLoggedIn = function (req, res, next) {
+
   // If user is authenticated in the session, send them to their profile instead
   if (req.isAuthenticated())
     res.redirect('/profile');
@@ -22,7 +22,7 @@ var alreadyLoggedIn = function(req, res, next) {
 };
 
 // Route middleware to make sure a user is an admin
-var requireAdmin = function(req, res, next) {
+var requireAdmin = function (req, res, next) {
 
   if (req.user) {
     if (req.user.admin) {

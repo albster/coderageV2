@@ -1,37 +1,37 @@
 var bcrypt = require('bcrypt-nodejs');
 var uuidV4 = require('uuid/v4');
 
-var db     = require('./db');
+var db = require('./db');
 
 // Set up User class
-var User = function(user) {
+var User = function (user) {
   var that = Object.create(User.prototype);
 
-  that.id       = user.id;
-  that.email    = user.email;
+  that.id = user.id;
+  that.email = user.email;
   that.password = user.password;
 
   return that;
 };
 
 // Gets a random id for this user
-var generateUserId = function() {
+var generateUserId = function () {
   return uuidV4();
 };
 
 // Hash and salt the password with bcrypt
-var hashPassword = function(password) {
+var hashPassword = function (password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
 // Check if password is correct
-var validPassword = function(password, savedPassword) {
+var validPassword = function (password, savedPassword) {
   return bcrypt.compareSync(password, savedPassword);
 };
 
 // Create a new user
 // callback(err, newUser)
-var createUser = function(email, password, callback) {
+var createUser = function (email, password, callback) {
   var newUser = {
     id: generateUserId(),
     email: email,
@@ -39,7 +39,7 @@ var createUser = function(email, password, callback) {
   };
   db.query('INSERT INTO users ( id, email, password ) values (?,?,?)',
     [newUser.id, newUser.email, newUser.password],
-    function(err) {
+    function (err) {
       if (err) {
         if (err.code === 'ER_DUP_ENTRY') {
           // If we somehow generated a duplicate user id, try again
@@ -56,9 +56,9 @@ var createUser = function(email, password, callback) {
 
 // Check if a user exists and create them if they do not
 // callback(err, newUser)
-var signup = function(req, email, password, callback) {
+var signup = function (req, email, password, callback) {
   // Check if there's already a user with that email
-  db.query('SELECT * FROM users WHERE email = ?', [email], function(err, rows) {
+  db.query('SELECT * FROM users WHERE email = ?', [email], function (err, rows) {
     if (err)
       return callback(err);
 
@@ -73,9 +73,9 @@ var signup = function(req, email, password, callback) {
 
 // Log in a user
 // callback(err, user)
-var login = function(req, email, password, callback) {
+var login = function (req, email, password, callback) {
   // Check that the user logging in exists
-  db.query('SELECT * FROM users WHERE email = ?', [email], function(err, rows) {
+  db.query('SELECT * FROM users WHERE email = ?', [email], function (err, rows) {
     if (err)
       return callback(err);
 
@@ -92,8 +92,8 @@ var login = function(req, email, password, callback) {
 
 // List all users
 // callback(err, users)
-var listUsers = function(callback) {
-  db.query('SELECT * FROM users', [], function(err, rows) {
+var listUsers = function (callback) {
+  db.query('SELECT * FROM users', [], function (err, rows) {
     if (err)
       return callback(err);
 
@@ -103,7 +103,7 @@ var listUsers = function(callback) {
 
 // Delete a user
 // callback(err)
-var deleteUser = function(id, callback) {
+var deleteUser = function (id, callback) {
   db.query('DELETE FROM users WHERE id = ?', [id], callback);
 };
 

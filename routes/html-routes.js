@@ -7,14 +7,14 @@ module.exports = function (app) {
 
   // index route loads view.html
   app.get("/", function (req, res) {
-    Chirp.findAll({}).then(function(results) {
+    Chirp.findAll({}).then(function (results) {
       // results are available to us inside the .then
       res.render("index", {
-        title: "Welcome!", 
+        title: "Welcome!",
         Chirps: results
       });
     });
-});
+  });
 
   app.get("/login", function (req, res) {
     res.render("login")
