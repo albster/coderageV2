@@ -99,7 +99,7 @@ background: lightslategray;
     margin-right: 300px;
   }
   .loginBlock {
-    width: 600px;
+    width: 700px;
     margin-top: 100px;
   }
   .loginButton {
@@ -108,8 +108,8 @@ background: lightslategray;
   }
   .logoutButton {
     align-content: center;
-    margin-left: 760px;
-   }
+    margin-left: 700px;
+  }
   .directories {
     text-align: center;
     color: white;
@@ -121,7 +121,7 @@ background: lightslategray;
   }
   .rageBlock{
     width: 600px;
-    margin-top: 200px;
+    margin-top: 250px;
   }
   .cool-font {
     color: white; 
@@ -133,7 +133,7 @@ background: lightslategray;
     font-family: 'Pacifico', cursive;
     font-size: 30px;
     color:grey;
-    margin-top: 150px;
+    margin-top: 170px;
     background-color: none;
     margin-bottom: -180px;
   }
